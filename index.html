@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Tattoo - Sistema de Agendamento</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header__content">
+                <h1 class="header__logo">🔥 Studio Tattoo</h1>
+                <nav class="nav">
+                    <button class="nav__item nav__item--active" data-page="home">Início</button>
+                    <button class="nav__item" data-page="agendamento">Agendar</button>
+                    <button class="nav__item" data-page="calendario">Calendário</button>
+                    <button class="nav__item" data-page="admin">Gerenciar</button>
+                </nav>
+                <button class="theme-toggle" id="theme-toggle">
+                    <span class="theme-toggle__icon">🌙</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Home Page -->
+            <section id="home" class="page page--active">
+                <div class="hero">
+                    <h2 class="hero__title">Bem-vindo ao Studio Tattoo</h2>
+                    <p class="hero__subtitle">Arte na pele, agendamento digital. Sua próxima tatuagem está a um clique de distância.</p>
+                    <div class="hero__actions">
+                        <button class="btn btn--primary btn--large" data-page="agendamento">
+                            ⚡ Agendar Agora
+                        </button>
+                        <button class="btn btn--secondary btn--large" data-page="calendario">
+                            📅 Ver Horários
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-card__icon">🎨</div>
+                        <h3>Agendamento Inteligente</h3>
+                        <p>Sistema moderno com verificação de disponibilidade em tempo real</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card__icon">📋</div>
+                        <h3>Gestão Completa</h3>
+                        <p>Controle total de agendamentos com exportação e relatórios</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card__icon">🌙</div>
+                        <h3>Tema Adaptável</h3>
+                        <p>Interface que se adapta ao seu estilo, modo claro ou escuro</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Agendamento Page -->
+            <section id="agendamento" class="page">
+                <div class="page-header">
+                    <h2>Novo Agendamento</h2>
+                    <p>Preencha os dados para reservar sua sessão de tatuagem</p>
+                </div>
+
+                <form class="form" id="agendamento-form">
+                    <div class="form__row">
+                        <div class="form__group">
+                            <label class="form__label" for="cliente">
+                                <span class="form__label-icon">👤</span>
+                                Nome Completo
+                            </label>
+                            <input type="text" id="cliente" name="cliente" class="form__input" required 
+                                   placeholder="Seu nome completo">
+                        </div>
+                        <div class="form__group">
+                            <label class="form__label" for="telefone">
+                                <span class="form__label-icon">📱</span>
+                                Telefone
+                            </label>
+                            <input type="tel" id="telefone" name="telefone" class="form__input" required 
+                                   placeholder="(11) 99999-9999">
+                        </div>
+                    </div>
+
+                    <div class="form__group">
+                        <label class="form__label" for="email">
+                            <span class="form__label-icon">✉️</span>
+                            E-mail
+                        </label>
+                        <input type="email" id="email" name="email" class="form__input" required 
+                               placeholder="seu@email.com">
+                    </div>
+
+                    <div class="form__row">
+                        <div class="form__group">
+                            <label class="form__label" for="data">
+                                <span class="form__label-icon">📅</span>
+                                Data Desejada
+                            </label>
+                            <input type="date" id="data" name="data" class="form__input" required>
+                        </div>
+                        <div class="form__group">
+                            <label class="form__label" for="horario">
+                                <span class="form__label-icon">⏰</span>
+                                Horário
+                            </label>
+                            <select id="horario" name="horario" class="form__select" required>
+                                <option value="">Primeiro, selecione a data</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form__group">
+                        <label class="form__label" for="servico">
+                            <span class="form__label-icon">🎯</span>
+                            Tipo de Serviço
+                        </label>
+                        <select id="servico" name="servico" class="form__select" required>
+                            <option value="">Escolha o tipo de serviço</option>
+                        </select>
+                    </div>
+
+                    <div class="form__group">
+                        <label class="form__label" for="observacoes">
+                            <span class="form__label-icon">💭</span>
+                            Observações
+                        </label>
+                        <textarea id="observacoes" name="observacoes" class="form__textarea" 
+                                  placeholder="Descreva sua ideia de tatuagem, tamanho, localização no corpo, se já tem referências, etc."></textarea>
+                    </div>
+
+                    <div class="form__actions">
+                        <button type="submit" class="btn btn--primary btn--full btn--large">
+                            ✨ Confirmar Agendamento
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Calendário Page -->
+            <section id="calendario" class="page">
+                <div class="page-header">
+                    <h2>Calendário de Disponibilidade</h2>
+                    <p>Visualize todos os horários disponíveis e já agendados</p>
+                </div>
+
+                <div class="calendar">
+                    <div class="calendar__header">
+                        <button class="btn btn--outline btn--small" id="prev-month">‹ Anterior</button>
+                        <h3 class="calendar__title" id="calendar-title">Junho 2025</h3>
+                        <button class="btn btn--outline btn--small" id="next-month">Próximo ›</button>
+                    </div>
+                    <div class="calendar__grid" id="calendar-grid">
+                        <!-- Calendar will be generated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="legend">
+                    <div class="legend__item">
+                        <span class="legend__color legend__color--available"></span>
+                        <span>Disponível para agendamento</span>
+                    </div>
+                    <div class="legend__item">
+                        <span class="legend__color legend__color--booked"></span>
+                        <span>Já possui agendamento</span>
+                    </div>
+                    <div class="legend__item">
+                        <span class="legend__color legend__color--past"></span>
+                        <span>Data já passou</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Admin Page -->
+            <section id="admin" class="page">
+                <div id="login-section" class="login-section">
+                    <div class="login-card">
+                        <div class="login-card__icon">🔐</div>
+                        <h2>Área Administrativa</h2>
+                        <p>Acesso restrito para gerenciamento de agendamentos</p>
+                        
+                        <form class="form" id="login-form">
+                            <div class="form__group">
+                                <label class="form__label" for="usuario">
+                                    <span class="form__label-icon">👤</span>
+                                    Usuário
+                                </label>
+                                <input type="text" id="usuario" name="usuario" class="form__input" required 
+                                       placeholder="Digite seu usuário">
+                            </div>
+                            <div class="form__group">
+                                <label class="form__label" for="senha">
+                                    <span class="form__label-icon">🔑</span>
+                                    Senha
+                                </label>
+                                <input type="password" id="senha" name="senha" class="form__input" required 
+                                       placeholder="Digite sua senha">
+                            </div>
+                            <button type="submit" class="btn btn--primary btn--full btn--large">
+                                🚀 Entrar no Sistema
+                            </button>
+                        </form>
+                        
+                        <div class="login-hint">
+                            <small>💡 Para teste: <strong>admin</strong> / <strong>123456</strong></small>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="admin-section" class="admin-section" style="display: none;">
+                    <div class="admin-header">
+                        <div class="admin-header__info">
+                            <h2>Painel Administrativo</h2>
+                            <p class="admin-header__subtitle">Gerencie todos os agendamentos do estúdio</p>
+                        </div>
+                        <div class="admin-actions">
+                            <button class="btn btn--secondary" id="export-csv">
+                                📊 Exportar CSV
+                            </button>
+                            <button class="btn btn--outline" id="logout">
+                                🚪 Sair
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-card__icon">📅</div>
+                            <div class="stat-card__number" id="total-agendamentos">0</div>
+                            <div class="stat-card__label">Total de Agendamentos</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-card__icon">⏰</div>
+                            <div class="stat-card__number" id="agendamentos-hoje">0</div>
+                            <div class="stat-card__label">Agendamentos Hoje</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-card__icon">📈</div>
+                            <div class="stat-card__number" id="agendamentos-semana">0</div>
+                            <div class="stat-card__label">Esta Semana</div>
+                        </div>
+                    </div>
+
+                    <div class="table-container">
+                        <div class="table-header">
+                            <h3>Lista de Agendamentos</h3>
+                            <div class="table-filters">
+                                <input type="date" id="filter-date" class="form__input form__input--small" 
+                                       placeholder="Filtrar por data">
+                                <select id="filter-service" class="form__select form__select--small">
+                                    <option value="">Todos os serviços</option>
+                                </select>
+                            </div>
+                        </div>
+                        <table class="table" id="agendamentos-table">
+                            <thead>
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>Contato</th>
+                                    <th>Data/Hora</th>
+                                    <th>Serviço</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="agendamentos-tbody">
+                                <!-- Table content will be generated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal__backdrop"></div>
+        <div class="modal__content">
+            <div class="modal__header">
+                <h3 class="modal__title" id="modal-title">Confirmação</h3>
+                <button class="modal__close" id="modal-close">×</button>
+            </div>
+            <div class="modal__body">
+                <p id="modal-message">Mensagem do modal</p>
+            </div>
+            <div class="modal__footer">
+                <button class="btn btn--outline" id="modal-cancel">Cancelar</button>
+                <button class="btn btn--primary" id="modal-confirm">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
